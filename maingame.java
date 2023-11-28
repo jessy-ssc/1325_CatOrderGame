@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 
+//import java.awt.Component;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,6 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.Timer;
+//import java.awt.Image;
+//import java.awt.Graphics;
 
 public class maingame {
 	JFrame window;
@@ -46,12 +49,11 @@ public class maingame {
 	}
 	
 	public maingame(){
-		
 		window = new JFrame();
 		window.setSize(800, 600);
 		//size of window
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.getContentPane().setBackground(Color.yellow);
+		window.getContentPane().setBackground(Color.orange);
 		//background color for title and game
 		window.setLayout(null);
 		window.setIconImage(logo.getImage());
@@ -66,15 +68,17 @@ public class maingame {
 		titleNamePanel.setBounds(100, 100, 600, 150);
 		titleNamePanel.setBackground(Color.orange);
 		//color for title panel
+		//set same as backfground color
 		titleNameLabel = new JLabel("Cat Order Game");
 		titleNameLabel.setForeground(Color.gray);
-        //color for title
+        //color for title text
 		titleNameLabel.setFont(titleFont);
 		
 		startButtonPanel = new JPanel();
 		startButtonPanel.setBounds(300, 400, 200, 100);
-		startButtonPanel.setBackground(Color.pink);
+		startButtonPanel.setBackground(Color.orange);
 		//color for clock-in panel
+		//set same as backfground color
 		
 		startButton = new JButton("CLOCK IN");
 		startButton.setBackground(Color.white);
@@ -94,22 +98,21 @@ public class maingame {
 		window.setVisible(true);
 		//end of title screen
 	}
-	
 	public void createGameScreen(){
 		titleNamePanel.setVisible(false);
 		startButtonPanel.setVisible(false);
 		
 		mainTextPanel = new JPanel();
 		mainTextPanel.setBounds(100, 100, 600, 250);
-		mainTextPanel.setBackground(Color.blue);
-        //
+		mainTextPanel.setBackground(Color.orange);
+        //set same as backfground color(orange)
 		con.add(mainTextPanel);		
 		mainTextArea = new JTextArea("This is the main text are. This game is going to be great. I'm sure of it!!!!!!!");
 		mainTextArea.setBounds(100, 100, 600, 250);
-		mainTextArea.setBackground(Color.black);
-        //
-		mainTextArea.setForeground(Color.white);
-        //
+		mainTextArea.setBackground(Color.white);
+        //background color for main text
+		mainTextArea.setForeground(Color.black);
+        //main text color
 		mainTextArea.setFont(normalFont);
 		mainTextArea.setLineWrap(true);
 		mainTextArea.setWrapStyleWord(true); 
@@ -119,15 +122,15 @@ public class maingame {
 
 		choiceButtonPanel = new JPanel();
 		choiceButtonPanel.setBounds(250, 350, 300, 150);
-		choiceButtonPanel.setBackground(Color.black);
-        //
+		choiceButtonPanel.setBackground(Color.white);
+        //background color for choice panel
 		choiceButtonPanel.setLayout(new GridLayout(4,1));
 		con.add(choiceButtonPanel);		
 		choice1 = new JButton("Choice 1");
-		choice1.setBackground(Color.black);
+		choice1.setBackground(Color.white);
 		//
-		choice1.setForeground(Color.white);
-		//
+		choice1.setForeground(Color.black);
+		//choice text color
 		choice1.setFont(normalFont);
 		choice1.setFocusPainted(false);
 		choice1.addActionListener(choiceHandler); 
@@ -136,8 +139,8 @@ public class maingame {
 		//end of option 1
 
 		choice2 = new JButton("Choice 2");
-		choice2.setBackground(Color.black);
-		choice2.setForeground(Color.white);
+		choice2.setBackground(Color.white);
+		choice2.setForeground(Color.black);
 		choice2.setFont(normalFont);
 		choice2.setFocusPainted(false);
 		choice2.addActionListener(choiceHandler);
@@ -146,8 +149,8 @@ public class maingame {
 		//end of option 2
 
 		choice3 = new JButton("Choice 3");
-		choice3.setBackground(Color.black);
-		choice3.setForeground(Color.white);
+		choice3.setBackground(Color.white);
+		choice3.setForeground(Color.black);
 		choice3.setFont(normalFont);
 		choice3.setFocusPainted(false);
 		choice3.addActionListener(choiceHandler);
@@ -156,8 +159,8 @@ public class maingame {
 		//end of option 3
 
 		choice4 = new JButton("Choice 4");
-		choice4.setBackground(Color.black);
-		choice4.setForeground(Color.white);
+		choice4.setBackground(Color.white);
+		choice4.setForeground(Color.black);
 		choice4.setFont(normalFont);
 		choice4.setFocusPainted(false);
 		choice4.addActionListener(choiceHandler);
@@ -166,60 +169,32 @@ public class maingame {
 		//end of option 4
 		
 //		choice4.setContentAreaFilled(false);  // Disable highlighting on press!!!
-		menuPanel = new JPanel();
-		menuPanel.setFont(normalFont);
-		menuPanel.setBounds(50,700,100,50);
-		menuPanel.setBackground(Color.black);
-		menuPanel.setLayout(new GridLayout(7,2));
-		con.add(menuPanel);
-		//drinks
-		coffee = new JLabel("Plain Coffee");
-		coffee.setFont(normalFont);
-		coffee.setForeground(Color.white);
-		menuPanel.add(coffee);
-		latte = new JLabel("Latte");
-		latte.setFont(normalFont);
-		latte.setForeground(Color.white);
-		menuPanel.add(latte);
-		espresso = new JLabel("Espresso");
-		espresso.setFont(normalFont);
-		espresso.setForeground(Color.white);
-		menuPanel.add(espresso);
-		//treats
-		cake = new JLabel("Cake Slice");
-		cake.setFont(normalFont);
-		cake.setForeground(Color.white);
-		menuPanel.add(cake);
-		muffin = new JLabel("Muffin");
-		muffin.setFont(normalFont);
-		muffin.setForeground(Color.white);
-		menuPanel.add(muffin);
-		cookie = new JLabel("Cookie");
-		cookie.setFont(normalFont);
-		cookie.setForeground(Color.white);
-		menuPanel.add(cookie);
 
 		playerPanel = new JPanel();
 		playerPanel.setBounds(100, 15, 600, 50);
-		playerPanel.setBackground(Color.black);
+		playerPanel.setBackground(Color.white);
 		//color for player panel
 		playerPanel.setLayout(new GridLayout(1, 4));
 		con.add(playerPanel);
 		hpLabel = new JLabel("HP:");
 		hpLabel.setFont(normalFont);
-		hpLabel.setForeground(Color.white);
+		hpLabel.setForeground(Color.black);
+		//
 		playerPanel.add(hpLabel);
 		hpLabelNumber = new JLabel();
 		hpLabelNumber.setFont(normalFont);
-		hpLabelNumber.setForeground(Color.white);
+		hpLabelNumber.setForeground(Color.black);
+		//
 		playerPanel.add(hpLabelNumber);
 		timeLabel = new JLabel("TIMER:");
 		timeLabel.setFont(normalFont);
-		timeLabel.setForeground(Color.white);
+		timeLabel.setForeground(Color.black);
+		//
 		playerPanel.add(timeLabel);
 		timeLabelnum = new JLabel();
 		timeLabelnum.setFont(normalFont);
-		timeLabelnum.setForeground(Color.white);
+		timeLabelnum.setForeground(Color.black);
+		//
 		playerPanel.add(timeLabelnum);
 
 		playerSetup();
@@ -241,101 +216,117 @@ public class maingame {
 	}
 
 	//start of choices
-	//Scanner lol = new Scanner(System.in);
-	int cc1, cc2;
-	//int [] ans = new int[1];
-	int ic1, ic2;
-	int p1, p2;
-	int rndmElem_one, rndmElem_two, rndmElem_three, rndmElem_four;
+	String cc1, cc2;
+	String ic1, ic2;
+	String rndmElem_one, rndmElem_two, rndmElem_three, rndmElem_four;
 	int score;
 
-	public void randomizer(){
-      // Creating arraylist 
-      ArrayList<Integer> araylist = new ArrayList<Integer>();
-      araylist.add(1);
-      araylist.add(2);
-      araylist.add(3);
-      araylist.add(4);
-      araylist.add(5);
-      araylist.add(6);
-      Random rndm = new Random();
-      //int rndmIndx;
-        
+	/* 
 	  int rndmIndx1 = rndm.nextInt(araylist.size());
       int rndmIndx2 = rndm.nextInt(araylist.size());
       int rndmIndx3 = rndm.nextInt(araylist.size());
       int rndmIndx4 = rndm.nextInt(araylist.size());
-        
-      rndmElem_one = araylist.get(rndmIndx1);
-      rndmElem_two = araylist.get(rndmIndx2);
-	  if(rndmElem_two == rndmElem_one){
-		rndmElem_two = araylist.get(rndmIndx2);
+	*/
+
+	public void randomizer(){
+		 // Creating arraylist 
+		 ArrayList<String> araylist = new ArrayList<String>();
+		 // Adding elements in arraylist
+		 araylist.add("Plain Coffee");
+		 araylist.add("Latte");
+		 araylist.add("Espresso");
+		 araylist.add("Cake Slice");
+		 araylist.add("Muffin");
+		 araylist.add("Cookie");
+  
+		Random rndm = new Random();
+   
+		//int rndmIndx1 = rndm.nextInt(araylist.size());  
+		rndmElem_one = araylist.get(rndm.nextInt(araylist.size()));
+		//ic1 = rndmElem_one;
+		//araylist.remove(rndmElem_one);
+  
+		//int rndmIndx2 = rndm.nextInt(araylist.size());
+		rndmElem_two = araylist.get(rndm.nextInt(araylist.size()));
+		//cc1 = rndmElem_two;
+		//araylist.remove(rndmElem_two);
+  
+		//int rndmIndx3 = rndm.nextInt(araylist.size());
+		rndmElem_three = araylist.get(rndm.nextInt(araylist.size()));
+		//cc2 = rndmElem_three;
+		//araylist.remove(rndmElem_three);
+  
+		//int rndmIndx4 = rndm.nextInt(araylist.size());
+		rndmElem_four = araylist.get(rndm.nextInt(araylist.size()));
+		//ic2 = rndmElem_four;
+		//araylist.remove(rndmElem_four);
+  
+		ic1 = rndmElem_one;
+		cc1 = rndmElem_two;
+		cc2 = rndmElem_three;
+		ic2 = rndmElem_four;
 	  }
-	  else if(rndmElem_two != rndmElem_one){
-      	rndmElem_three = araylist.get(rndmIndx3);
-	  if(rndmElem_three == rndmElem_two || rndmElem_three == rndmElem_one){
-		rndmElem_three = araylist.get(rndmIndx3);
-	  }
-	  else if(rndmElem_three != rndmElem_two && rndmElem_three != rndmElem_one){
-		rndmElem_four = araylist.get(rndmIndx4);
-		if(rndmElem_four == rndmElem_three || rndmElem_four == rndmElem_two || rndmElem_four == rndmElem_one){
-			rndmElem_four = araylist.get(rndmIndx4);
-		}
-	  else if(rndmElem_four != rndmElem_three && rndmElem_four != rndmElem_two && rndmElem_four != rndmElem_one){
-			
-	  }
-		
-	  }
-	  }
-        
-	 //int cc1, cc2;
-      cc1 = rndmElem_two;
-      cc2 = rndmElem_three;
-	  ic1 = rndmElem_one;
-	  ic2 = rndmElem_four;
-	}
 	public void subh(){
-		mainTextArea.setText("WRONG");
+		//mainTextArea.setText("WRONG");
 		playerHP = playerHP- 10;
+		hpLabelNumber.setText(""+playerHP);
 		//return hpLabelNumber;
 	}
 	public void as(){
-		mainTextArea.setText("CORRECT");
 		score = score + 25;
 	}
 	public void customer1(){
 		position = "customer1";
+
+		a = "00:00";
+		timeLabelnum.setText(a);
 		randomizer();
-		mainTextArea.setText("I would like:" + cc1);
+
+		mainTextArea.setText("I would like: " + cc1);
 		choice1.setText("CONTINUE");
-		choice2.setText("RETURN");
+		choice2.setText("");
 		choice3.setText("");
 		choice4.setText("");
 	}
 	public void customer2(){
 		position = "customer2";
+
+		timer.stop();
+		a = "00:00";
+		timeLabelnum.setText(a);
 		randomizer();
-		mainTextArea.setText("I would like:" + cc1);
+
+		mainTextArea.setText("I would like: " + cc1);
 		choice1.setText("CONTINUE");
-		choice2.setText("RETURN");
+		choice2.setText("");
 		choice3.setText("");
 		choice4.setText("");
 	}
 	public void customer3(){
 		position = "customer3";
+
+		timer.stop();
+		a = "00:00";
+		timeLabelnum.setText(a);
 		randomizer();
-		mainTextArea.setText("I would like:" + cc1);
+
+		mainTextArea.setText("I would like: " + cc1);
 		choice1.setText("CONTINUE");
-		choice2.setText("RETURN");
+		choice2.setText("");
 		choice3.setText("");
 		choice4.setText("");
 	}
 	public void customer4(){
 		position = "customer4";
+
+		timer.stop();
+		a = "00:00";
+		timeLabelnum.setText(a);
 		randomizer();
-		mainTextArea.setText("I would like:" + cc1);
+
+		mainTextArea.setText("I would like: " + cc1);
 		choice1.setText("CONTINUE");
-		choice2.setText("RETURN");
+		choice2.setText("");
 		choice3.setText("");
 		choice4.setText("");
 	}
@@ -343,9 +334,10 @@ public class maingame {
 		position = "levelone";
 		
 		a = "00:16";
+		timeLabelnum.setText(a);
 		b = 16;
-		tick();
-		mainTextArea.setText("What did the customer order");		
+		tick(a, b);
+		mainTextArea.setText("What did the customer order?");		
 		choice1.setText(""+ic1);
 		choice2.setText(""+cc1);
 		choice3.setText(""+cc2);
@@ -356,8 +348,8 @@ public class maingame {
 
 		a = "00:12";
 		b = 12;
-		tick();
-		mainTextArea.setText("What did the customer order");		
+		tick(a, b);
+		mainTextArea.setText("What did the customer order?");		
 		choice1.setText(""+ic1);
 		choice2.setText(""+ic1);
 		choice3.setText(""+cc2);
@@ -367,8 +359,8 @@ public class maingame {
 		position = "levelthree";
 		a = "00:08";
 		b = 8;
-		tick();
-		mainTextArea.setText("What did the customer order");		
+		tick(a, b);
+		mainTextArea.setText("What did the customer order?");		
 		choice1.setText(""+cc1);
 		choice2.setText(""+ic1);
 		choice3.setText(""+cc2);
@@ -379,8 +371,8 @@ public class maingame {
 
 		a = "00:04";
 		b = 4;
-		tick();
-		mainTextArea.setText("What did the customer order");		
+		tick(a, b);
+		mainTextArea.setText("What did the customer order?");		
 		choice1.setText(""+ic1);
 		choice2.setText(""+cc2);
 		choice3.setText(""+cc1);
@@ -389,6 +381,9 @@ public class maingame {
 	}
 	public void i_ending(){
 		position = "i_ending";
+		timer.stop();
+		a = "00:00";
+		timeLabelnum.setText(a);
 		
 		mainTextArea.setText("Score: "+score);
 		
@@ -403,6 +398,9 @@ public class maingame {
 	}
 	public void p_ending(){
 		position = "p_ending";
+		timer.stop();
+		a = "00:00";
+		timeLabelnum.setText(a);
 		
 		mainTextArea.setText("Perfect Score!\n You win!\n");
 		
@@ -423,27 +421,22 @@ public class maingame {
 	String ddSecond, ddMinute;	
 	DecimalFormat dFormat = new DecimalFormat("00");
 
-	public void tick(){
-		
-		//window = new JFrame();
-		//window.setSize(800,600);
-		//window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//window.setLayout(null);
-		
-		//counterLabel = new JLabel("");
-		//counterLabel.setBounds(0, 0, 100, 100);
-		//counterLabel.setHorizontalAlignment(JLabel.CENTER);
+	public void tick(String a, int b){
+		timeLabelnum.setText(a);
 		timeLabelnum.setFont(normalFont);
 		
-		window.add(timeLabelnum);
-		window.setVisible(true);
+		//window.add(timeLabelnum);
+		//window.setVisible(true);
 		
 		// Countdown Timer
-		timeLabelnum.setText(a);
+		//timeLabelnum.setText(a);
 		second =b;
 		minute =0;
 		countdownTimer();
-		timer.start();						
+		timer.start();				
+		if(second == 0){
+			i_ending();
+		}		
 	}
 
 	public void countdownTimer() {
@@ -520,9 +513,11 @@ public class maingame {
 					if(playerHP == 0){
 						i_ending();
 					}
-					else{
-					levelone();
-					}
+
+					//if(timer == 0){
+					//	mainTextArea.setText("TIME IS UP!!!");
+					//	i_ending();
+					//}
 					break;
 					case "c2":
 					as();
@@ -533,8 +528,10 @@ public class maingame {
 					if(playerHP == 0){
 						i_ending();
 					}
-					else{
-					levelone();
+
+					if(second == 0){
+						mainTextArea.setText("TIME IS UP!!!");
+						i_ending();
 					}
 					break;
 					case "c4":
@@ -542,17 +539,13 @@ public class maingame {
 					if(playerHP == 0){
 						i_ending();
 					}
-					else{
-					levelone();
+
+					if(second == 0){
+						mainTextArea.setText("TIME IS UP!!!");
+						i_ending();
 					}
 					break;
 				}
-				/*if(second == 0){
-					//add color
-					entirePanel.setBackground(Color.red);
-					mainTextArea.setText("TIME IS UP!!!");
-					i_ending();
-				}*/
 				break;
 			case "leveltwo":
 				switch(yourChoice){
@@ -561,8 +554,10 @@ public class maingame {
 					if(playerHP == 0){
 						i_ending();
 					}
-					else{
-					leveltwo();
+
+					if(second == 0){
+						mainTextArea.setText("TIME IS UP!!!");
+						i_ending();
 					}
 					break;
 					case "c2":
@@ -570,8 +565,10 @@ public class maingame {
 					if(playerHP == 0){
 						i_ending();
 					}
-					else{
-					leveltwo();
+
+					if(second == 0){
+						mainTextArea.setText("TIME IS UP!!!");
+						i_ending();
 					}
 					break;
 					case "c3":
@@ -579,8 +576,10 @@ public class maingame {
 					if(playerHP == 0){
 						i_ending();
 					}
-					else{
-					leveltwo();
+
+					if(second == 0){
+						mainTextArea.setText("TIME IS UP!!!");
+						i_ending();
 					}
 					break;
 					case "c4":
@@ -601,8 +600,10 @@ public class maingame {
 					if(playerHP == 0){
 						i_ending();
 					}
-					else{
-					levelthree();
+
+					if(second == 0){
+						mainTextArea.setText("TIME IS UP!!!");
+						i_ending();
 					}
 					break;
 					case "c3":
@@ -610,8 +611,10 @@ public class maingame {
 					if(playerHP == 0){
 						i_ending();
 					}
-					else{
-					levelthree();
+
+					if(second == 0){
+						mainTextArea.setText("TIME IS UP!!!");
+						i_ending();
 					}
 					break;
 					case "c4":
@@ -619,9 +622,12 @@ public class maingame {
 					if(playerHP == 0){
 						i_ending();
 					}
-					else{
-					levelthree();
+
+					if(second == 0){
+						mainTextArea.setText("TIME IS UP!!!");
+						i_ending();
 					}
+					break;
 				}
 				break;
 			case "levelfour":
@@ -631,8 +637,10 @@ public class maingame {
 					if(playerHP == 0){
 						i_ending();
 					}
-					else{
-					levelfour();
+
+					if(second == 0){
+						mainTextArea.setText("TIME IS UP!!!");
+						i_ending();
 					}
 					break;
 					case "c2":
@@ -640,8 +648,10 @@ public class maingame {
 					if(playerHP == 0){
 						i_ending();
 					}
-					else{
-					levelfour();
+
+					if(second == 0){
+						mainTextArea.setText("TIME IS UP!!!");
+						i_ending();
 					}
 					break;
 					case "c3":
@@ -653,8 +663,10 @@ public class maingame {
 					if(playerHP == 0){
 						i_ending();
 					}
-					else{
-					levelfour();
+
+					if(second == 0){
+						mainTextArea.setText("TIME IS UP!!!");
+						i_ending();
 					}
 				}
 				break;
