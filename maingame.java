@@ -17,6 +17,7 @@ import javax.swing.Timer;
 import java.awt.Image;
 import java.awt.Graphics;
 
+//declarations for windoe, different panels, fonts, and main variables
 public class maingame {
 	JFrame window;
 	//creates window
@@ -123,7 +124,6 @@ public class maingame {
 		public JTextAreaPlus(String text) {
 			super(text);
 		}
-		
 		public void setImage(ImageIcon icon, int x, int y, int width, int height) {
 			
 			this.image = icon.getImage();
@@ -139,8 +139,10 @@ public class maingame {
 			g.drawImage(image,x,y,width,height,null);	
 			super.paint(g);
 		}
+		
 	}
-	//end of background image code
+	//end of background code
+
 	public void createGameScreen(){
 		titleNamePanel.setVisible(false);
 		startButtonPanel.setVisible(false);
@@ -150,6 +152,7 @@ public class maingame {
 		mainTextPanel.setBackground(Color.orange);
         //set same as backfground color(orange)
 		con.add(mainTextPanel);		
+		mainTextArea = new JTextArea("This is the main text are. This game is going to be great. I'm sure of it!!!!!!!");
 		mainTextArea.setBounds(100, 100, 600, 250);
 		mainTextArea.setBackground(Color.white);
         //background color for main text
@@ -244,7 +247,6 @@ public class maingame {
 	String ic1, ic2;
 	String rndmElem_one, rndmElem_two, rndmElem_three, rndmElem_four;
 	int score;
-	
 	//randomizer for customer item
 	public void randomizer(){
 		 // Creating arraylist 
@@ -276,23 +278,24 @@ public class maingame {
 		cc2 = rndmElem_three;
 		ic2 = rndmElem_four;
 	}
-	//subtracter for picking wrong choice
+	//subtracter for wrong choice
 	public void subh(){
+		//mainTextArea.setText("WRONG");
 		playerHP = playerHP- 10;
 		hpLabelNumber.setText(""+playerHP);
+		//return hpLabelNumber;
 	}
-	//addition for choosing correct option
+	//addition for correct choice
 	public void as(){
 		score = score + 25;
 	}
-	//setup for player hp 
 	public void playerSetup(){
 		playerHP = 50;
 		hpLabelNumber.setText(""+playerHP);
 
 		beginning_scene();
 	}
-	//screen after main menu and beginning of game
+	//beginning scene of game/second slide
 	public void beginning_scene(){
 		position = "beginning_scene";
 
@@ -307,7 +310,7 @@ public class maingame {
 		choice3.setVisible(false);
 		choice4.setVisible(false);
 	}
-	//start of customers for each level
+	//beginning of customers 
 	public void customer1(){
 		position = "customer1";
 
@@ -368,8 +371,9 @@ public class maingame {
 		choice3.setText("");
 		choice4.setText("");
 	}
-	//end of customer setup
-	//level setup
+	//end of customers
+
+	//beginning of levels
 	public void levelone(){
 		position = "levelone";
 		
@@ -421,7 +425,8 @@ public class maingame {
 		choice4.setText(""+ic2);
 
 	}
-	//end of level setup
+	//end of levels
+
 	//imperfect ending
 	public void i_ending(){
 		position = "i_ending";
@@ -454,7 +459,7 @@ public class maingame {
 		choice3.setVisible(false);
 		choice4.setVisible(false);
 	}
-	//code for when time runs out
+	//screen for time being up
 	public void timeup(){
 		position = "timeup";
 
@@ -467,7 +472,8 @@ public class maingame {
 		choice3.setVisible(false);
 		choice4.setVisible(false);
 	}
-	//beginning of code for timer
+
+	//beginning of timer code
 	Timer timer;	
 	int second, minute;
 	String ddSecond, ddMinute;	
@@ -513,7 +519,6 @@ public class maingame {
 		});		
 	}
 	//end timer
-	//allows for user clicking options to lead to next screen
 	public class TitleScreenHandler implements ActionListener{
 		
 		public void actionPerformed(ActionEvent event){
@@ -522,13 +527,13 @@ public class maingame {
 		}
 	}
 	
-	//user imput for choices 1-4
+	//code for user choice leading to different poistions in the game
 	public class ChoiceHandler implements ActionListener{
 		
 		public void actionPerformed(ActionEvent event){
 			
 			String yourChoice = event.getActionCommand();
-			//cases for different points in the game
+			
 			switch(position){
 			case "beginning_scene":
 				switch(yourChoice){
