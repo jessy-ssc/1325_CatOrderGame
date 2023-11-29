@@ -199,6 +199,50 @@ public class maingame {
 		playerSetup();
 
 	}
+	String cc1, cc2;
+	String ic1, ic2;
+	String rndmElem_one, rndmElem_two, rndmElem_three, rndmElem_four;
+	int score;
+
+	public void randomizer(){
+		 // Creating arraylist 
+		 ArrayList<String> araylist = new ArrayList<String>();
+		 // Adding elements in arraylist
+		 araylist.add("Plain Coffee");
+		 araylist.add("Latte");
+		 araylist.add("Espresso");
+		 araylist.add("Cake Slice");
+		 araylist.add("Muffin");
+		 araylist.add("Cookie");
+  
+		Random rndm = new Random();
+  
+		rndmElem_one = araylist.get(rndm.nextInt(araylist.size()));
+		araylist.remove(rndmElem_one);
+  
+		rndmElem_two = araylist.get(rndm.nextInt(araylist.size()));
+		araylist.remove(rndmElem_two);
+
+		rndmElem_three = araylist.get(rndm.nextInt(araylist.size()));
+		araylist.remove(rndmElem_three);
+  
+		rndmElem_four = araylist.get(rndm.nextInt(araylist.size()));
+		araylist.remove(rndmElem_four);
+  
+		ic1 = rndmElem_one;
+		cc1 = rndmElem_two;
+		cc2 = rndmElem_three;
+		ic2 = rndmElem_four;
+	}
+	public void subh(){
+		//mainTextArea.setText("WRONG");
+		playerHP = playerHP- 10;
+		hpLabelNumber.setText(""+playerHP);
+		//return hpLabelNumber;
+	}
+	public void as(){
+		score = score + 25;
+	}
 	public void playerSetup(){
 		playerHP = 50;
 		hpLabelNumber.setText(""+playerHP);
@@ -213,67 +257,6 @@ public class maingame {
 		choice2.setVisible(false);
 		choice3.setVisible(false);
 		choice4.setVisible(false);
-	}
-
-	//start of choices
-	String cc1, cc2;
-	String ic1, ic2;
-	String rndmElem_one, rndmElem_two, rndmElem_three, rndmElem_four;
-	int score;
-
-	/* 
-	  int rndmIndx1 = rndm.nextInt(araylist.size());
-      int rndmIndx2 = rndm.nextInt(araylist.size());
-      int rndmIndx3 = rndm.nextInt(araylist.size());
-      int rndmIndx4 = rndm.nextInt(araylist.size());
-	*/
-
-	public void randomizer(){
-		 // Creating arraylist 
-		 ArrayList<String> araylist = new ArrayList<String>();
-		 // Adding elements in arraylist
-		 araylist.add("Plain Coffee");
-		 araylist.add("Latte");
-		 araylist.add("Espresso");
-		 araylist.add("Cake Slice");
-		 araylist.add("Muffin");
-		 araylist.add("Cookie");
-  
-		Random rndm = new Random();
-   
-		//int rndmIndx1 = rndm.nextInt(araylist.size());  
-		rndmElem_one = araylist.get(rndm.nextInt(araylist.size()));
-		//ic1 = rndmElem_one;
-		//araylist.remove(rndmElem_one);
-  
-		//int rndmIndx2 = rndm.nextInt(araylist.size());
-		rndmElem_two = araylist.get(rndm.nextInt(araylist.size()));
-		//cc1 = rndmElem_two;
-		//araylist.remove(rndmElem_two);
-  
-		//int rndmIndx3 = rndm.nextInt(araylist.size());
-		rndmElem_three = araylist.get(rndm.nextInt(araylist.size()));
-		//cc2 = rndmElem_three;
-		//araylist.remove(rndmElem_three);
-  
-		//int rndmIndx4 = rndm.nextInt(araylist.size());
-		rndmElem_four = araylist.get(rndm.nextInt(araylist.size()));
-		//ic2 = rndmElem_four;
-		//araylist.remove(rndmElem_four);
-  
-		ic1 = rndmElem_one;
-		cc1 = rndmElem_two;
-		cc2 = rndmElem_three;
-		ic2 = rndmElem_four;
-	  }
-	public void subh(){
-		//mainTextArea.setText("WRONG");
-		playerHP = playerHP- 10;
-		hpLabelNumber.setText(""+playerHP);
-		//return hpLabelNumber;
-	}
-	public void as(){
-		score = score + 25;
 	}
 	public void customer1(){
 		position = "customer1";
@@ -357,7 +340,7 @@ public class maingame {
 		tick(a, b);
 		mainTextArea.setText("What did the customer order?");		
 		choice1.setText(""+ic1);
-		choice2.setText(""+ic1);
+		choice2.setText(""+ic2);
 		choice3.setText(""+cc2);
 		choice4.setText(""+cc1);
 	}
