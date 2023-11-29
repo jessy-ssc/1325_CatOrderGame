@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 
-//import java.awt.Component;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,8 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.Timer;
-//import java.awt.Image;
-//import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Graphics;
 
 public class maingame {
 	JFrame window;
@@ -35,6 +34,8 @@ public class maingame {
 	String position;
 	String a;
 	int b;
+
+	JTextAreaPlus textAreaPlus;
 	
 	TitleScreenHandler tsHandler = new TitleScreenHandler();
 	ChoiceHandler choiceHandler = new ChoiceHandler();
@@ -53,20 +54,18 @@ public class maingame {
 		window.setSize(800, 600);
 		//size of window
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.getContentPane().setBackground(Color.orange);
+		//editing
+		window.getContentPane().setBackground(null);
 		//background color for title and game
 		window.setLayout(null);
 		window.setIconImage(logo.getImage());
 		//adds icon for game
 		//add cat icon
 		con = window.getContentPane();
-		/* 
-		entirePanel = new JPanel();
-		entirePanel.setBounds(800,600,800,600);
-		*/
 		
 		titleNamePanel = new JPanel();
 		titleNamePanel.setBounds(100, 100, 600, 150);
+		//editing
 		titleNamePanel.setBackground(Color.orange);
 		//color for title panel
 		//set same as backfground color
@@ -76,13 +75,14 @@ public class maingame {
 		titleNameLabel.setFont(titleFont);
 		
 		startButtonPanel = new JPanel();
-		startButtonPanel.setBounds(300, 400, 200, 100);
+		startButtonPanel.setBounds(300, 400, 165, 50);
+		//editing
 		startButtonPanel.setBackground(Color.orange);
 		//color for clock-in panel
 		//set same as backfground color
 		
 		startButton = new JButton("CLOCK IN");
-		startButton.setBackground(Color.white);
+		startButton.setBackground(Color.orange);
         //background color of start button
 		startButton.setForeground(Color.black);
         //color of text for start button
@@ -95,9 +95,49 @@ public class maingame {
 		
 		con.add(titleNamePanel);
 		con.add(startButtonPanel);
+
+		//background image
+		textAreaPlus = new JTextAreaPlus();
+		textAreaPlus.setSize(800, 600);
+		textAreaPlus.setFont(new Font("Times New Roman", Font.PLAIN, 36));
+		ImageIcon back = new ImageIcon(getClass().getClassLoader().getResource("catcafe.jpg"));
+		textAreaPlus.setImage(back,0,0,800,600);
+		textAreaPlus.setForeground(null);
+
+
+		window.add(textAreaPlus);
+		//background imagge
 		
 		window.setVisible(true);
 		//end of title screen
+	}
+	public class JTextAreaPlus extends JTextArea{
+	
+		Image image;
+		int x, y, width, height;
+	
+		public JTextAreaPlus() {
+			super();
+		}
+		public JTextAreaPlus(String text) {
+			super(text);
+		}
+		
+		public void setImage(ImageIcon icon, int x, int y, int width, int height) {
+			
+			this.image = icon.getImage();
+			this.x = x;
+			this.y = y;
+			this.width = width;
+			this.height = height;
+			setOpaque(false);
+			repaint();
+		}
+		public void paint(Graphics g) {
+			
+			g.drawImage(image,x,y,width,height,null);	
+			super.paint(g);
+		}
 	}
 	public void createGameScreen(){
 		titleNamePanel.setVisible(false);
@@ -251,6 +291,11 @@ public class maingame {
 	}
 	public void beginning_scene(){
 		position = "beginning_scene";
+
+		textAreaPlus.setVisible(false);
+		window.setBackground(Color.orange);
+		
+
 		mainTextArea.setText("In this game you will be taking orders from customers.\nFor each round, the time will get shorter and the game will fininsh when time is up!\nGood luck!\n");
 		
 		choice1.setText("CONTINUE");
