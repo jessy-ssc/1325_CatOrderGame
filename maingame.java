@@ -111,6 +111,7 @@ public class maingame {
 		window.setVisible(true);
 		//end of title screen
 	}
+	//part of code for background image
 	public class JTextAreaPlus extends JTextArea{
 	
 		Image image;
@@ -139,6 +140,7 @@ public class maingame {
 			super.paint(g);
 		}
 	}
+	//end of background image code
 	public void createGameScreen(){
 		titleNamePanel.setVisible(false);
 		startButtonPanel.setVisible(false);
@@ -148,7 +150,6 @@ public class maingame {
 		mainTextPanel.setBackground(Color.orange);
         //set same as backfground color(orange)
 		con.add(mainTextPanel);		
-		mainTextArea = new JTextArea("This is the main text are. This game is going to be great. I'm sure of it!!!!!!!");
 		mainTextArea.setBounds(100, 100, 600, 250);
 		mainTextArea.setBackground(Color.white);
         //background color for main text
@@ -243,7 +244,8 @@ public class maingame {
 	String ic1, ic2;
 	String rndmElem_one, rndmElem_two, rndmElem_three, rndmElem_four;
 	int score;
-
+	
+	//randomizer for customer item
 	public void randomizer(){
 		 // Creating arraylist 
 		 ArrayList<String> araylist = new ArrayList<String>();
@@ -274,21 +276,23 @@ public class maingame {
 		cc2 = rndmElem_three;
 		ic2 = rndmElem_four;
 	}
+	//subtracter for picking wrong choice
 	public void subh(){
-		//mainTextArea.setText("WRONG");
 		playerHP = playerHP- 10;
 		hpLabelNumber.setText(""+playerHP);
-		//return hpLabelNumber;
 	}
+	//addition for choosing correct option
 	public void as(){
 		score = score + 25;
 	}
+	//setup for player hp 
 	public void playerSetup(){
 		playerHP = 50;
 		hpLabelNumber.setText(""+playerHP);
 
 		beginning_scene();
 	}
+	//screen after main menu and beginning of game
 	public void beginning_scene(){
 		position = "beginning_scene";
 
@@ -303,6 +307,7 @@ public class maingame {
 		choice3.setVisible(false);
 		choice4.setVisible(false);
 	}
+	//start of customers for each level
 	public void customer1(){
 		position = "customer1";
 
@@ -363,6 +368,8 @@ public class maingame {
 		choice3.setText("");
 		choice4.setText("");
 	}
+	//end of customer setup
+	//level setup
 	public void levelone(){
 		position = "levelone";
 		
@@ -414,6 +421,7 @@ public class maingame {
 		choice4.setText(""+ic2);
 
 	}
+	//end of level setup
 	//imperfect ending
 	public void i_ending(){
 		position = "i_ending";
@@ -446,6 +454,7 @@ public class maingame {
 		choice3.setVisible(false);
 		choice4.setVisible(false);
 	}
+	//code for when time runs out
 	public void timeup(){
 		position = "timeup";
 
@@ -458,6 +467,7 @@ public class maingame {
 		choice3.setVisible(false);
 		choice4.setVisible(false);
 	}
+	//beginning of code for timer
 	Timer timer;	
 	int second, minute;
 	String ddSecond, ddMinute;	
@@ -503,6 +513,7 @@ public class maingame {
 		});		
 	}
 	//end timer
+	//allows for user clicking options to lead to next screen
 	public class TitleScreenHandler implements ActionListener{
 		
 		public void actionPerformed(ActionEvent event){
@@ -511,13 +522,13 @@ public class maingame {
 		}
 	}
 	
-
+	//user imput for choices 1-4
 	public class ChoiceHandler implements ActionListener{
 		
 		public void actionPerformed(ActionEvent event){
 			
 			String yourChoice = event.getActionCommand();
-			
+			//cases for different points in the game
 			switch(position){
 			case "beginning_scene":
 				switch(yourChoice){
