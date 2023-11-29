@@ -22,7 +22,7 @@ public class maingame {
 	JFrame window;
 	//creates window
 	Container con;
-	JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, menuPanel, entirePanel;
+	JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, menuPanel;
 	JLabel titleNameLabel, hpLabel, hpLabelNumber, timeLabel, timeLabelnum;
 	JLabel coffee, latte, espresso, cake, cookie, muffin, mnum, item;
 	Font titleFont = new Font("Comic Sans MS", Font.PLAIN, 80);
@@ -60,9 +60,10 @@ public class maingame {
 		//adds icon for game
 		//add cat icon
 		con = window.getContentPane();
-
+		/* 
 		entirePanel = new JPanel();
 		entirePanel.setBounds(800,600,800,600);
+		*/
 		
 		titleNamePanel = new JPanel();
 		titleNamePanel.setBounds(100, 100, 600, 150);
@@ -70,7 +71,7 @@ public class maingame {
 		//color for title panel
 		//set same as backfground color
 		titleNameLabel = new JLabel("Cat Order Game");
-		titleNameLabel.setForeground(Color.gray);
+		titleNameLabel.setForeground(Color.black);
         //color for title text
 		titleNameLabel.setFont(titleFont);
 		
@@ -83,7 +84,7 @@ public class maingame {
 		startButton = new JButton("CLOCK IN");
 		startButton.setBackground(Color.white);
         //background color of start button
-		startButton.setForeground(Color.gray);
+		startButton.setForeground(Color.black);
         //color of text for start button
 		startButton.setFont(normalFont);
 		startButton.addActionListener(tsHandler);
@@ -122,7 +123,7 @@ public class maingame {
 
 		choiceButtonPanel = new JPanel();
 		choiceButtonPanel.setBounds(250, 350, 300, 150);
-		choiceButtonPanel.setBackground(Color.white);
+		choiceButtonPanel.setBackground(null);
         //background color for choice panel
 		choiceButtonPanel.setLayout(new GridLayout(4,1));
 		con.add(choiceButtonPanel);		
@@ -168,8 +169,6 @@ public class maingame {
 		choiceButtonPanel.add(choice4);
 		//end of option 4
 		
-//		choice4.setContentAreaFilled(false);  // Disable highlighting on press!!!
-
 		playerPanel = new JPanel();
 		playerPanel.setBounds(100, 15, 600, 50);
 		playerPanel.setBackground(Color.white);
@@ -179,22 +178,22 @@ public class maingame {
 		hpLabel = new JLabel("HP:");
 		hpLabel.setFont(normalFont);
 		hpLabel.setForeground(Color.black);
-		//
+		//hp color text
 		playerPanel.add(hpLabel);
 		hpLabelNumber = new JLabel();
 		hpLabelNumber.setFont(normalFont);
 		hpLabelNumber.setForeground(Color.black);
-		//
+		//hp num color
 		playerPanel.add(hpLabelNumber);
 		timeLabel = new JLabel("TIMER:");
 		timeLabel.setFont(normalFont);
 		timeLabel.setForeground(Color.black);
-		//
+		//time text color
 		playerPanel.add(timeLabel);
 		timeLabelnum = new JLabel();
 		timeLabelnum.setFont(normalFont);
 		timeLabelnum.setForeground(Color.black);
-		//
+		//time num color
 		playerPanel.add(timeLabelnum);
 
 		playerSetup();
@@ -208,11 +207,12 @@ public class maingame {
 	}
 	public void beginning_scene(){
 		position = "beginning_scene";
-		mainTextArea.setText("In this game you will be taking orders from customers.\n For each round, the time will get shorter and the game will fininsh when time is up!\n Good luck!\n");
+		mainTextArea.setText("In this game you will be taking orders from customers.\nFor each round, the time will get shorter and the game will fininsh when time is up!\nGood luck!\n");
+		
 		choice1.setText("CONTINUE");
-		choice2.setText("RETURN");
-		choice3.setText("");
-		choice4.setText("");
+		choice2.setVisible(false);
+		choice3.setVisible(false);
+		choice4.setVisible(false);
 	}
 
 	//start of choices
@@ -282,11 +282,16 @@ public class maingame {
 		timeLabelnum.setText(a);
 		randomizer();
 
-		mainTextArea.setText("I would like: " + cc1);
+		choiceButtonPanel.setBackground(Color.white);
+		choice2.setVisible(true);
+		choice3.setVisible(true);
+		choice4.setVisible(true);
+		mainTextArea.setText("I would like a: " + cc1);
 		choice1.setText("CONTINUE");
 		choice2.setText("");
 		choice3.setText("");
 		choice4.setText("");
+		
 	}
 	public void customer2(){
 		position = "customer2";
@@ -296,7 +301,7 @@ public class maingame {
 		timeLabelnum.setText(a);
 		randomizer();
 
-		mainTextArea.setText("I would like: " + cc1);
+		mainTextArea.setText("I would like a: " + cc1);
 		choice1.setText("CONTINUE");
 		choice2.setText("");
 		choice3.setText("");
@@ -310,7 +315,7 @@ public class maingame {
 		timeLabelnum.setText(a);
 		randomizer();
 
-		mainTextArea.setText("I would like: " + cc1);
+		mainTextArea.setText("I would like a: " + cc1);
 		choice1.setText("CONTINUE");
 		choice2.setText("");
 		choice3.setText("");
@@ -324,7 +329,7 @@ public class maingame {
 		timeLabelnum.setText(a);
 		randomizer();
 
-		mainTextArea.setText("I would like: " + cc1);
+		mainTextArea.setText("I would like a: " + cc1);
 		choice1.setText("CONTINUE");
 		choice2.setText("");
 		choice3.setText("");
@@ -333,9 +338,9 @@ public class maingame {
 	public void levelone(){
 		position = "levelone";
 		
-		a = "00:16";
+		a = "00:02";
 		timeLabelnum.setText(a);
-		b = 16;
+		b = 2;
 		tick(a, b);
 		mainTextArea.setText("What did the customer order?");		
 		choice1.setText(""+ic1);
@@ -346,8 +351,9 @@ public class maingame {
 	public void leveltwo(){
 		position = "leveltwo";
 
-		a = "00:12";
-		b = 12;
+		a = "00:02";
+		timeLabelnum.setText(a);
+		b = 2;
 		tick(a, b);
 		mainTextArea.setText("What did the customer order?");		
 		choice1.setText(""+ic1);
@@ -357,8 +363,9 @@ public class maingame {
 	}
 	public void levelthree(){
 		position = "levelthree";
-		a = "00:08";
-		b = 8;
+
+		a = "00:01";
+		b = 1;
 		tick(a, b);
 		mainTextArea.setText("What did the customer order?");		
 		choice1.setText(""+cc1);
@@ -369,8 +376,8 @@ public class maingame {
 	public void levelfour(){
 		position = "levelfour";
 
-		a = "00:04";
-		b = 4;
+		a = "00:01";
+		b = 1;
 		tick(a, b);
 		mainTextArea.setText("What did the customer order?");		
 		choice1.setText(""+ic1);
@@ -379,23 +386,24 @@ public class maingame {
 		choice4.setText(""+ic2);
 
 	}
+	//imperfect ending
 	public void i_ending(){
 		position = "i_ending";
+
+		mainTextArea.setBackground(Color.white);
 		timer.stop();
 		a = "00:00";
 		timeLabelnum.setText(a);
 		
 		mainTextArea.setText("Score: "+score);
 		
-		choice1.setText("");
-		choice2.setText("");
-		choice3.setText("");
-		choice4.setText("");
+		choiceButtonPanel.setBackground(Color.orange);
 		choice1.setVisible(false);
 		choice2.setVisible(false);
 		choice3.setVisible(false);
 		choice4.setVisible(false);
 	}
+	//perfect ending
 	public void p_ending(){
 		position = "p_ending";
 		timer.stop();
@@ -404,18 +412,24 @@ public class maingame {
 		
 		mainTextArea.setText("Perfect Score!\n You win!\n");
 		
-		choice1.setText("");
-		choice2.setText("");
-		choice3.setText("");
-		choice4.setText("");
+		choiceButtonPanel.setBackground(Color.orange);
 		choice1.setVisible(false);
 		choice2.setVisible(false);
 		choice3.setVisible(false);
 		choice4.setVisible(false);
 	}
-	//timer start 
-	//JLabel counterLabel;
-	//Font font1 = new Font("Comic Sans MS", Font.PLAIN, 30);	
+	public void timeup(){
+		position = "timeup";
+
+		mainTextArea.setBackground(Color.red);
+		mainTextArea.setText("TIMES UP!!!");
+		
+		choiceButtonPanel.setBackground(null);
+		choice1.setText("CONTINUE");
+		choice2.setVisible(false);
+		choice3.setVisible(false);
+		choice4.setVisible(false);
+	}
 	Timer timer;	
 	int second, minute;
 	String ddSecond, ddMinute;	
@@ -425,11 +439,6 @@ public class maingame {
 		timeLabelnum.setText(a);
 		timeLabelnum.setFont(normalFont);
 		
-		//window.add(timeLabelnum);
-		//window.setVisible(true);
-		
-		// Countdown Timer
-		//timeLabelnum.setText(a);
 		second =b;
 		minute =0;
 		countdownTimer();
@@ -460,6 +469,7 @@ public class maingame {
 				}
 				if(minute==0 && second==0) {
 					timer.stop();
+					timeup();
 				}
 			}
 		});		
@@ -513,11 +523,6 @@ public class maingame {
 					if(playerHP == 0){
 						i_ending();
 					}
-
-					//if(timer == 0){
-					//	mainTextArea.setText("TIME IS UP!!!");
-					//	i_ending();
-					//}
 					break;
 					case "c2":
 					as();
@@ -528,20 +533,10 @@ public class maingame {
 					if(playerHP == 0){
 						i_ending();
 					}
-
-					if(second == 0){
-						mainTextArea.setText("TIME IS UP!!!");
-						i_ending();
-					}
 					break;
 					case "c4":
 					subh();
 					if(playerHP == 0){
-						i_ending();
-					}
-
-					if(second == 0){
-						mainTextArea.setText("TIME IS UP!!!");
 						i_ending();
 					}
 					break;
@@ -554,31 +549,16 @@ public class maingame {
 					if(playerHP == 0){
 						i_ending();
 					}
-
-					if(second == 0){
-						mainTextArea.setText("TIME IS UP!!!");
-						i_ending();
-					}
 					break;
 					case "c2":
 					subh();
 					if(playerHP == 0){
 						i_ending();
 					}
-
-					if(second == 0){
-						mainTextArea.setText("TIME IS UP!!!");
-						i_ending();
-					}
 					break;
 					case "c3":
 					subh();
 					if(playerHP == 0){
-						i_ending();
-					}
-
-					if(second == 0){
-						mainTextArea.setText("TIME IS UP!!!");
 						i_ending();
 					}
 					break;
@@ -600,31 +580,16 @@ public class maingame {
 					if(playerHP == 0){
 						i_ending();
 					}
-
-					if(second == 0){
-						mainTextArea.setText("TIME IS UP!!!");
-						i_ending();
-					}
 					break;
 					case "c3":
 					subh();
 					if(playerHP == 0){
 						i_ending();
 					}
-
-					if(second == 0){
-						mainTextArea.setText("TIME IS UP!!!");
-						i_ending();
-					}
 					break;
 					case "c4":
 					subh();
 					if(playerHP == 0){
-						i_ending();
-					}
-
-					if(second == 0){
-						mainTextArea.setText("TIME IS UP!!!");
 						i_ending();
 					}
 					break;
@@ -637,20 +602,10 @@ public class maingame {
 					if(playerHP == 0){
 						i_ending();
 					}
-
-					if(second == 0){
-						mainTextArea.setText("TIME IS UP!!!");
-						i_ending();
-					}
 					break;
 					case "c2":
 					subh();
 					if(playerHP == 0){
-						i_ending();
-					}
-
-					if(second == 0){
-						mainTextArea.setText("TIME IS UP!!!");
 						i_ending();
 					}
 					break;
@@ -663,13 +618,16 @@ public class maingame {
 					if(playerHP == 0){
 						i_ending();
 					}
-
-					if(second == 0){
-						mainTextArea.setText("TIME IS UP!!!");
-						i_ending();
+					break;
 					}
-				}
-				break;
+					break;
+				case "timeup":
+					switch(yourChoice){
+					case "c1":
+					i_ending();
+					break;
+					}
+
 			}
 		}
 	}
