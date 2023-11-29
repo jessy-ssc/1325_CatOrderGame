@@ -40,7 +40,7 @@ public class maingame {
 	TitleScreenHandler tsHandler = new TitleScreenHandler();
 	ChoiceHandler choiceHandler = new ChoiceHandler();
 	
-	ImageIcon logo = new ImageIcon("character_themuppets_kermit_b77a431b.jpeg");
+	ImageIcon logo = new ImageIcon("caticon1.jpg");
 	//Icon for game
 
 
